@@ -1,0 +1,132 @@
+Training Logistic Regression...
+Best parameters for Logistic Regression: {'lr__C': 0.01, 'lr__penalty': 'l1'}
+Train Accuracy: 0.71
+Test Accuracy: 0.71
+--------------------------------------------------
+Test Classification Report:
+
+              precision    recall  f1-score   support
+
+           0       0.90      0.69      0.78      1294
+           1       0.47      0.78      0.59       467
+
+    accuracy                           0.71      1761
+   macro avg       0.68      0.73      0.68      1761
+weighted avg       0.78      0.71      0.73      1761
+
+ROC AUC: 0.813
+Model saved to models/logistic_regression.pkl
+
+Training Logistic Regression with SMOTE sampling...
+Best parameters for Logistic Regression with SMOTE: {'lr__C': 0.01, 'lr__penalty': 'l2'}
+Train Accuracy: 0.72
+Test Accuracy: 0.72
+--------------------------------------------------
+Test Classification Report:
+
+              precision    recall  f1-score   support
+
+           0       0.88      0.72      0.79      1294
+           1       0.48      0.74      0.58       467
+
+    accuracy                           0.72      1761
+   macro avg       0.68      0.73      0.69      1761
+weighted avg       0.78      0.72      0.74      1761
+
+ROC AUC: 0.813
+Model saved to models/logistic_regression_smote.pkl
+
+Training Logistic Regression with ADASYN sampling...
+Best parameters for Logistic Regression with ADASYN: {'lr__C': 0.01, 'lr__penalty': 'l1'}
+Train Accuracy: 0.70
+Test Accuracy: 0.71
+--------------------------------------------------
+Test Classification Report:
+
+              precision    recall  f1-score   support
+
+           0       0.90      0.68      0.77      1294
+           1       0.47      0.79      0.59       467
+
+    accuracy                           0.71      1761
+   macro avg       0.69      0.73      0.68      1761
+weighted avg       0.79      0.71      0.72      1761
+
+ROC AUC: 0.813
+Model saved to models/logistic_regression_adasyn.pkl
+
+Training Random Forest...
+Best parameters for Random Forest: {'max_depth': 10, 'max_features': 'log2', 'n_estimators': 200}
+Train Accuracy: 0.86
+Test Accuracy: 0.78
+--------------------------------------------------
+Test Classification Report:
+
+              precision    recall  f1-score   support
+
+           0       0.89      0.80      0.84      1294
+           1       0.56      0.72      0.63       467
+
+    accuracy                           0.78      1761
+   macro avg       0.72      0.76      0.73      1761
+weighted avg       0.80      0.78      0.78      1761
+
+ROC AUC: 0.840
+Model saved to models/random_forest.pkl
+
+Training Balanced Random Forest...
+Best parameters for Balanced Random Forest: {'max_depth': 10, 'max_features': 'log2', 'n_estimators': 500}
+Train Accuracy: 0.84
+Test Accuracy: 0.76
+--------------------------------------------------
+Test Classification Report:
+
+              precision    recall  f1-score   support
+
+           0       0.90      0.76      0.82      1294
+           1       0.54      0.78      0.63       467
+
+    accuracy                           0.76      1761
+   macro avg       0.72      0.77      0.73      1761
+weighted avg       0.81      0.76      0.77      1761
+
+ROC AUC: 0.842
+Model saved to models/balanced_random_forest.pkl
+
+Training Random Forest with SMOTE...
+Best parameters for Random Forest with SMOTE: {'rf__max_depth': 5, 'rf__max_features': 'sqrt', 'rf__n_estimators': 100}
+Train Accuracy: 0.77
+Test Accuracy: 0.77
+--------------------------------------------------
+Test Classification Report:
+
+              precision    recall  f1-score   support
+
+           0       0.90      0.77      0.83      1294
+           1       0.54      0.75      0.63       467
+
+    accuracy                           0.77      1761
+   macro avg       0.72      0.76      0.73      1761
+weighted avg       0.80      0.77      0.78      1761
+
+ROC AUC: 0.838
+Model saved to models/random_forest_smote.pkl
+
+Training XGBoost...
+Best parameters for XGBoost: {'learning_rate': 0.03162277660168379, 'max_depth': 5, 'n_estimators': 100}
+Train Accuracy: 0.79
+Test Accuracy: 0.76
+--------------------------------------------------
+Test Classification Report:
+
+              precision    recall  f1-score   support
+
+           0       0.91      0.75      0.82      1294
+           1       0.53      0.79      0.63       467
+
+    accuracy                           0.76      1761
+   macro avg       0.72      0.77      0.73      1761
+weighted avg       0.81      0.76      0.77      1761
+
+ROC AUC: 0.845
+Model saved to models/xgboost.pkl

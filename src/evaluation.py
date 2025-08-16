@@ -30,4 +30,4 @@ def evaluate_model(model, X_train, y_train, X_test, y_test):
     print('-' * 50)
     print("Test Classification Report:\n")
     print(classification_report(y_test, test_pred))
-    print("ROC AUC:", f"{roc_auc_score(y_test, y_prob):.2f}")
+    print("ROC AUC:", f"{roc_auc_score(y_test, y_prob):.3f}")
