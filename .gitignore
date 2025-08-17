@@ -1,1 +1,4 @@
-log.txt
+logs.txt
+src/__pycache__
+src/*.pyc
+mlruns

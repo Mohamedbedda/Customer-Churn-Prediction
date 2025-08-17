@@ -1,5 +1,5 @@
 import os
-from sklearn.metrics import accuracy_score, classification_report, roc_auc_score, confusion_matrix
+from sklearn.metrics import accuracy_score, average_precision_score, classification_report, roc_auc_score, confusion_matrix
 import seaborn as sns
 import matplotlib.pyplot as plt
 from.config import CONF_MAT_DIR
@@ -24,10 +24,14 @@ def evaluate_model(model, X_train, y_train, X_test, y_test):
     train_pred = model.predict(X_train)
     test_pred = model.predict(X_test)
     y_prob = model.predict_proba(X_test)[:, 1]
-
-    print(f"Train Accuracy: {accuracy_score(y_train, train_pred):.2f}")
-    print(f"Test Accuracy: {accuracy_score(y_test, test_pred):.2f}")
+        
+    print(f"Train Accuracy: {accuracy_score(y_train, train_pred) * 100:.2f} %")
+    print(f"Test Accuracy: {accuracy_score(y_test, test_pred) * 100:.2f} %") 
     print('-' * 50)
     print("Test Classification Report:\n")
     print(classification_report(y_test, test_pred))
-    print("ROC AUC:", f"{roc_auc_score(y_test, y_prob):.3f}")
+    
+    # Area Under the Receiver Operating Characteristic Curve
+    print(f"roc_auc: {roc_auc_score(y_test, y_prob):.2f}")
+    # Area Under the Precision-Recall Curve
+    print(f"pr_auc:  {average_precision_score(y_test, y_prob):.2f}") # useful for imbalanced dataset especially when positive class is rare
