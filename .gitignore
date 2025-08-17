@@ -1,4 +1,11 @@
+# Ignore log files
 logs.txt
+
+# Ignore Python cache directories
 src/__pycache__
+
+# Ignore compiled Python files
 src/*.pyc
+
+# Ignore MLflow runs directory
 mlruns
