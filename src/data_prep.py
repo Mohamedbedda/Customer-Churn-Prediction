@@ -1,5 +1,8 @@
 import pandas as pd
 import numpy as np
+from sklearn.model_selection import train_test_split
+
+from src.config import PROCESSED_DATA_PATH, RANDOM_STATE, RAW_DATA_PATH, TARGET, TEST_SIZE
 
 def preprocess_raw_data(csv_input_path, csv_output_path):
     
@@ -25,7 +28,7 @@ def preprocess_raw_data(csv_input_path, csv_output_path):
     df.to_csv(csv_output_path)
     print(f"Preprocessed data saved to {csv_output_path}")
 
-def impute_total_charges(X_train, y_train, X_test, y_test):
+def clean_total_charges_col(X_train, y_train, X_test, y_test):
     """Impute missing TotalCharges using median per class."""
     train_df = X_train.copy()
     train_df["Churn"] = y_train
@@ -43,3 +46,18 @@ def impute_total_charges(X_train, y_train, X_test, y_test):
     X_test["TotalCharges"] = X_test.apply(impute, axis=1, medians_map=medians, target_series=y_test)
 
     return X_train, X_test
+
+
+def load_data():
+    preprocess_raw_data(RAW_DATA_PATH, PROCESSED_DATA_PATH)
+    df = pd.read_csv(PROCESSED_DATA_PATH, index_col="customerID")
+    
+    X = df.drop(TARGET, axis=1)
+    y = df[TARGET]
+    
+    X_train, X_test, y_train, y_test = train_test_split(
+        X, y, test_size=TEST_SIZE, random_state=RANDOM_STATE, stratify=y
+    )
+    
+    X_train, X_test = clean_total_charges_col(X_train, y_train, X_test, y_test)
+    return X_train, X_test, y_train, y_test

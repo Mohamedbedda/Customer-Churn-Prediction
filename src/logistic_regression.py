@@ -24,10 +24,11 @@ class LogisticRegressionTrainer(BaseTrainer):
         return "Logistic Regression " + self.method
     
     def get_params(self):
-        if self.method in [None, "balanced"]:
-            return {f'model__{k}': v for k, v in self.param_grid.items()}
-        else:
+        if self.method in ['smote', 'adasyn']:
             return {f'pipeline__model__{k}': v for k, v in self.param_grid.items()}
+        else:
+            return {f'model__{k}': v for k, v in self.param_grid.items()}
+        
 
     
     def get_model(self, method):
@@ -44,22 +45,20 @@ class LogisticRegressionTrainer(BaseTrainer):
                 ('preprocessor', preprocessor),
                 ('model', lr)
             ])
+        
+        base_pipeline = Pipeline([
+            ('preprocessor', preprocessor),
+            ('model', lr)
+        ])
+        
+        if method == 'smote':
             
-        elif method == 'smote':
-            base_pipeline = Pipeline([
-                ('preprocessor', preprocessor),
-                ('model', lr)
-            ])
             return ImbPipeline([
                 ('smote', SMOTE(random_state=RANDOM_STATE)),
                 ('pipeline', base_pipeline)
             ])
             
         elif method == 'adasyn':
-            base_pipeline = Pipeline([
-                ('preprocessor', preprocessor),
-                ('model', lr)
-            ])
             return ImbPipeline([
                 ('adasyn', ADASYN(random_state=RANDOM_STATE)),
                 ('pipeline', base_pipeline)

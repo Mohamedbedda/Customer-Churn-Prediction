@@ -1,10 +1,6 @@
 from abc import ABC, abstractmethod
 from sklearn.model_selection import GridSearchCV
-from imblearn.pipeline import Pipeline as ImbPipeline
-from imblearn.over_sampling import SMOTE, ADASYN
-from src.config import RANDOM_STATE
 from src.evaluation import evaluate_model, plot_confusion_matrix
-from src.utils import save_model
 
 class BaseTrainer(ABC):
     
@@ -40,14 +36,11 @@ class BaseTrainer(ABC):
         
         # Evaluation and saving the confusion matrix
         best_model = gs.best_estimator_
-        evaluate_model(best_model, X_train, y_train, X_test, y_test)
+        results = evaluate_model(best_model, X_train, y_train, X_test, y_test)
         
         filename = f"{self.get_name().lower().replace(' ', '_')}"
         plot_confusion_matrix(y_test, best_model.predict(X_test), 
                             f"{self.get_name()}", 
                             save_as=f"{filename}.png")
-        
-        # Save the model
-        save_model(best_model, f"{filename}.pkl")
-        
-        return best_model
+                
+        return best_model, gs.best_params_, results
