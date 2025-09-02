@@ -1,7 +1,6 @@
 RAW_DATA_PATH = "data/raw/WA_Fn-UseC_-Telco-Customer-Churn.csv"
 PROCESSED_DATA_PATH = "data/processed/telco_churn_processed.csv"
 CONF_MAT_DIR = "reports/confusion_matrices/"
-FEAT_IMP_DIR = "reports/feature_importances/"
 
 TARGET = "Churn"
 NUM_FEATURES = ['tenure', 'MonthlyCharges', 'TotalCharges']
