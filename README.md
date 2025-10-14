@@ -1,7 +1,7 @@
 # 📊 Customer Churn Prediction
 
-This repository contains a **machine learning project** for predicting customer churn in the telecom sector, using the [Telco Customer Churn dataset](https://www.kaggle.com/datasets/blastchar/telco-customer-churn) from Kaggle.
-It demonstrates an **end-to-end ML workflow**, from data preparation to model evaluation, with integrated **experiment tracking using MLflow**.
+This repository contains a machine learning project for predicting customer churn in the telecom sector, using the [Telco Customer Churn dataset](https://www.kaggle.com/datasets/blastchar/telco-customer-churn) from Kaggle.
+It demonstrates an end-to-end ML workflow, from data preparation to model evaluation, with integrated experiment tracking using MLflow.
 
 
 
